@@ -9,7 +9,6 @@
   </article>
 </template>
 
-
 <script>
 export default {
   async asyncData({ $content, params }) {

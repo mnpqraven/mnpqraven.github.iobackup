@@ -28,7 +28,7 @@
 
   &_red {
     @apply text-red-600;
-    @apply font-mono; 
+    @apply font-mono;
     @apply font-bold;
   }
 }
