@@ -1,18 +1,25 @@
 <template>
-  <main>
+  <div class="flex-row sm:flex">
     <NavBar></NavBar>
-    <div class="ml-16">
+    <div class="navInnerContent">
+      <nuxt-content :document="about"></nuxt-content>
       <nuxt-content :document="about"></nuxt-content>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
-export default ({
+export default {
+  name: 'About me',
   async asyncData({ $content }) {
     const about = await $content('about').fetch()
-    //curly
+    // curly
     return { about }
-  }
-})
+  },
+  head() {
+    return {
+      title: 'About me',
+    }
+  },
+}
 </script>

@@ -1,20 +1,46 @@
 <template>
-  <main>
+  <div class="flex-row sm:flex">
     <NavBar></NavBar>
-    <div class="ml-16">
-      <h1 class="bg-green-700 text-blue-200 font-mono text-4xl">Othi DB!</h1>
-      <p>{inserts content here}</p>
+    <div class="navInnerContent">
+      <h1 class="bg-green-700 text-blue-900 font-mono text-4xl">Othi DB!</h1>
       <div class="test">
-        Get CSS working <span class="test_red">faster and smarter</span> with <span class="test_working">PostCSS</span>
+        Get CSS working <span class="test_red">faster and smarter</span> with
+        <span class="test_working">PostCSS</span>
       </div>
       <div>
-        <button @click="count++" class="bg-red-300">count is {{ count }} </button>
-        <button @click="count = 0">reset count</button>
+        <button class="border-2 border-gray-900 bg-red-300" @click="count++">
+          count is {{ count }}
+        </button>
+        <button class="border-2 border-gray-900" @click="count = 0">
+          reset count
+        </button>
+        <HoverImage></HoverImage>
       </div>
+      <nuxt-content :document="index"></nuxt-content>
     </div>
-
-  </main>
+  </div>
 </template>
+
+<script>
+export default {
+  name: 'IndexPage',
+  async asyncData({ $content }) {
+    const index = await $content('index').fetch()
+    return { index }
+  },
+  data() {
+    return {
+      title: 'Index Page',
+      count: 0,
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
+}
+</script>
 
 <style lang="postcss">
 .test {
@@ -33,15 +59,3 @@
   }
 }
 </style>
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage',
-  data() {
-    return {
-      count: 0
-    }
-  }
-})
-</script>
